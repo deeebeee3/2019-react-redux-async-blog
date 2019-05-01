@@ -9,14 +9,20 @@ class PostList extends React.Component {
   }
 
   render() {
+    console.log(this.props.posts);
     return <div>Post List</div>;
   }
 }
 
-//Passing in null to connect as first arg as we do not have a mapStateToProps function right now
-//At present there is no state / data to get into this component
+//Now passing in mapStateToProps as first argument to connect
+//There is now state / data to get into this component
 //Pass in action creator (fetchPosts) as second argument
+
+const mapStateToProps = (state) => {
+  return { posts: state.posts }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   { fetchPosts: fetchPosts }
 )(PostList);
