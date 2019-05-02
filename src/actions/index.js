@@ -5,11 +5,14 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
   await dispatch(fetchPosts());
 
   //get just the userId property from all the posts (an array of 100 userIds) and find just the unique userIds
-  const userIds = _.uniq(_.map(getState().posts, 'userId'));
-  
-  console.log(userIds);
+  // const userIds = _.uniq(_.map(getState().posts, 'userId'));
+  // userIds.forEach(id => dispatch(fetchUser(id)));
 
-  userIds.forEach(id => dispatch(fetchUser(id)));
+  _.chain(getState().posts)
+    .map('userId')
+    .uniq()
+    .forEach(id => dispatch(fetchUser(id)))
+    .value(); //won't execute unless chain value() on the end.
 
 }
 
