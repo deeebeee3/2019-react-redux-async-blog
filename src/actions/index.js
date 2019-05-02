@@ -20,3 +20,8 @@ export const fetchUser = function(id) {
     dispatch({ type: "FETCH_USER", payload: response.data });
   }
 };
+
+
+const _fetchUser = () => {
+
+}
