@@ -13,9 +13,7 @@ export const fetchPosts = () => async dispatch => {
 //   dispatch({ type: "FETCH_USER", payload: response.data });
 // };
 
-export const fetchUser = (id) =>
-   (dispatch) =>
-    _fetchUser(id, dispatch);
+export const fetchUser = (id) => (dispatch) => _fetchUser(id, dispatch);
 
 
 const _fetchUser = _.memoize( async (id, dispatch) => {
